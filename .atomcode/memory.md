@@ -1,0 +1,1 @@
+- 后端必须用项目 .venv 启动（uv run uvicorn 或先 activate）；全局 Python D:\python3 装的是 mcp 2.2.0，与 langchain-mcp-adapters 0.3.2 不兼容（会报 ImportError: RequestContext），用全局解释器启动后端会崩溃。 <!-- atomcode-memory:v1 {"id":"m-82bc97f1-76a7-45d6-8900-01b4469f94e6","created_at":"2026-11-02T08:30:41.456Z","updated_at":"2026-11-02T08:30:41.456Z","topic":"环境/启动方式","status":"active","pinned":false} -->
