@@ -10,6 +10,11 @@ class Settings(BaseSettings):
     JWT_EXPIRE_HOURS: int = 24
     JWT_ALGORITHM: str = "HS256"
 
+    # MCP 服务
+    MCP_HOST: str = "127.0.0.1"
+    MCP_PORT: int = 8001
+    MCP_PATH: str = "/mcp"
+
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env", env_file_encoding="utf-8"
     )
@@ -35,3 +40,4 @@ ALLOWED_EXTENSIONS = {
     ".xlsx",
     ".zip",
 }
+STUDY_PLAN_MAX_LENGTH = 2000

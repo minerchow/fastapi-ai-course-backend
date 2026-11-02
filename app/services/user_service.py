@@ -1,6 +1,8 @@
 from operator import or_
 from app.common.exceptions import BusinessException
 from app.common.response import PageResponse
+from app.models.schedule import Schedule
+from app.models.study_plan import StudyPlan
 from app.models.user import User
 from app.schemas.user import (
     PasswordUpdateRequest,
@@ -103,5 +105,8 @@ def delete_user(db: Session, user_id: int, currut_user: User):
     user = db.query(User).filter(User.id == user_id).first()
     if not user:
         raise BusinessException(message="用户不存在")
+    # 逻辑外键：应用层级联清理该用户的关联数据，避免孤儿记录
+    db.query(Schedule).filter(Schedule.user_id == user_id).delete()
+    db.query(StudyPlan).filter(StudyPlan.user_id == user_id).delete()
     db.delete(user)
     db.commit()
