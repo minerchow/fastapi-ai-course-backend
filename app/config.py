@@ -15,6 +15,13 @@ class Settings(BaseSettings):
     MCP_PORT: int = 8001
     MCP_PATH: str = "/mcp"
 
+    LLM_BASE_URL: str = "https://note3-prev-api.askdiandian.com/v1"
+    LLM_API_KEY: str = ""
+    LLM_MODEL_NAME: str = "dots3-note-prev"
+    # 14 是本节的演示预算：当前简单图为 6 次“模型→工具”往返及最终回答留出步数。
+    # 不是框架默认值；增加中间件或改变执行图后，需要重新验证预算
+    AGENT_RECURSION_LIMIT: int = 14
+
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env", env_file_encoding="utf-8"
     )
